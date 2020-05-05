@@ -1,0 +1,35 @@
+.chat-main
+  .group-info
+    .group-info__left-box
+      .group-info__left-box__current-group
+        termA
+      %ul.group-info__left-box__member-list
+        Member：naoya
+    = link_to "#", class: "group-info__edit-btn" do
+      Edit
+  .messages
+    .message
+      .message__info
+        .message__info__name
+          naoya
+        .message__info__date
+          2020/05/03(Sun) 11:23:49
+      .message__text
+        よろしく！
+    .message
+      .message__info
+        .message__info__name
+          naoya
+        .message__info__date
+          2020/05/03(Sun) 11:23:49
+      .message__text
+        よろしく！
+  .form
+    %form.new_message
+      .input-box
+        %input.input-box__text{placeholder: "type a message", type: "form"}
+        %label.input-box__image
+          = icon('far', 'image')
+          %input.input-box__image__file{type: "file"}
+      %input.submit-btn{type: "submit", value: "Send"}
+      
