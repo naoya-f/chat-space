@@ -4,19 +4,15 @@
       .top-items__name
         = current_user.name
       .top-items__icons
-        = link_to "#" do
+        = link_to new_group_path do
           = icon('far', 'edit')
         = link_to edit_user_path(current_user) do
           = icon('fas', 'cog')
         
   .side-bar__group-list
-    = link_to "#", class: "group" do
-      .group__name
-        termA
-      .group__latest-message
-        よろしく！
-    = link_to "#", class: "group" do
-      .group__name
-        termB
-      .group__latest-message
-        おはよう！
+    - current_user.groups.each do |group|
+      = link_to '#', class: "group" do
+        .group__name
+          = group.name
+        .group__latest-message
+          メッセージはまだありません。
