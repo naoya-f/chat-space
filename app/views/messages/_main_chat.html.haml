@@ -2,34 +2,21 @@
   .group-info
     .group-info__left-box
       .group-info__left-box__current-group
-        termA
-      %ul.group-info__left-box__member-list
-        Member：naoya
-    = link_to "#", class: "group-info__edit-btn" do
+        = @group.name
+      .group-info__left-box__member-list
+        Member：
+        - @group.users.each do |user|
+          = user.name
+    = link_to edit_group_path(@group), class: "group-info__edit-btn" do
       Edit
   .messages
-    .message
-      .message__info
-        .message__info__name
-          naoya
-        .message__info__date
-          2020/05/03(Sun) 11:23:49
-      .message__text
-        よろしく！
-    .message
-      .message__info
-        .message__info__name
-          naoya
-        .message__info__date
-          2020/05/03(Sun) 11:23:49
-      .message__text
-        よろしく！
+    = render @messages
   .form
-    %form.new_message
+    = form_for [@group, @message] do |f|
       .input-box
-        %input.input-box__text{placeholder: "type a message", type: "form"}
-        %label.input-box__image
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__image' do
           = icon('far', 'image')
-          %input.input-box__image__file{type: "file"}
-      %input.submit-btn{type: "submit", value: "Send"}
+          = f.file_field :image, class: 'input-box__image__file' 
+      = f.submit 'Send', class: 'submit-btn'
       
