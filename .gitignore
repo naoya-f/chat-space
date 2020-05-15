@@ -18,3 +18,7 @@
 public/uploads/*
 
 public/uploads/*
+
+
+
+config/secrets.yml
